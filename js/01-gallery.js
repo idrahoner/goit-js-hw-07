@@ -6,8 +6,9 @@ let originalImage = {};
 
 galleryEl.addEventListener("click", onClickImage);
 
-const galleryCards = galleryItems.map(({ preview, original, description }) => {
-  return `
+const galleryCards = galleryItems
+  .map(({ preview, original, description }) => {
+    return `
     <div class="gallery__item">
       <a class="gallery__link" href="large-image.jpg">
         <img
@@ -19,11 +20,10 @@ const galleryCards = galleryItems.map(({ preview, original, description }) => {
       </a>
     </div>
     `;
-});
+  })
+  .join("");
 
-galleryCards.forEach((element) => {
-  galleryEl.insertAdjacentHTML("beforeend", element);
-});
+galleryEl.insertAdjacentHTML("beforeend", galleryCards);
 
 function onClickImage(event) {
   event.preventDefault();
