@@ -29,13 +29,13 @@ function onClickImage(event) {
   if (event.target.nodeName !== "IMG") {
     return;
   }
-  const imageSrc = event.target.dataset.source;
 
+  const imageSrc = event.target.dataset.source;
   originalImage = basicLightbox.create(`
     <img src="${imageSrc}">
     `);
-
   originalImage.show();
+
   window.addEventListener("keydown", onEscKeyPress);
 }
 
@@ -43,6 +43,7 @@ function onEscKeyPress(event) {
   if (event.code === "Escape") {
     event.preventDefault();
     originalImage.close();
+
     window.removeEventListener("keydown", onEscKeyPress);
   }
 }
