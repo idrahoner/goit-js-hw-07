@@ -1,29 +1,28 @@
 import { galleryItems } from "./gallery-items.js";
-// Change code below this line
 
 const galleryEl = document.querySelector(".gallery");
 let originalImage = {};
 
-galleryEl.addEventListener("click", onClickImage);
-
 const galleryCards = galleryItems
   .map(({ preview, original, description }) => {
     return `
-    <div class="gallery__item">
-      <a class="gallery__link" href="large-image.jpg">
-        <img
-          class="gallery__image"
-          src="${preview}"
-          data-source="${original}"
-          alt="${description}"
-        />
-      </a>
-    </div>
-    `;
+  <div class="gallery__item">
+  <a class="gallery__link" href="large-image.jpg">
+  <img
+  class="gallery__image"
+  src="${preview}"
+  data-source="${original}"
+  alt="${description}"
+  />
+  </a>
+  </div>
+  `;
   })
   .join("");
 
 galleryEl.insertAdjacentHTML("beforeend", galleryCards);
+
+galleryEl.addEventListener("click", onClickImage);
 
 function onClickImage(event) {
   event.preventDefault();
@@ -41,7 +40,8 @@ function onClickImage(event) {
 }
 
 function onEscKeyPress(event) {
-  if (event.code === "Escape" || event.code === "Space") {
+  if (event.code === "Escape") {
+    event.preventDefault();
     originalImage.close();
     window.removeEventListener("keydown", onEscKeyPress);
   }
